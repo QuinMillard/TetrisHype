@@ -42,7 +42,7 @@ void draw(){
   B.DrawBoard();
   C += 1;
   text("C = " + C, 0, 10);
-  if(C%30 == 0){
+  if(C%5 == 0){
     switch(rng){
       case 0:
         if(boardSquares.get(0).moveDown()){

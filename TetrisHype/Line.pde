@@ -16,6 +16,20 @@ class Line{
    }
    boolean moveDown(){
      if(yPosition + 1 == 20 || (line[xPosition][yPosition+1].checkVisable() ||line[xPosition + 1][yPosition+1].checkVisable() ||line[xPosition + 2][yPosition+1].checkVisable() ||line[xPosition + 3][yPosition+1].checkVisable())){
+       for(int j = 0; j < 20; j++){
+         for(int i = 0; i < 10; i++){
+           if(!line[i][j].isVisable){
+             break;
+           }
+           if(i == 9){
+             for(int index = 0; index < 10; index++){
+               line[index][j].invisible();
+             }
+             //Drop all the shit.
+             
+           }
+         }
+       }
        return true;
      }
      else{
@@ -56,4 +70,5 @@ class Line{
   block[][] updateArray(){
      return line;
    }
+   
 }

@@ -16,6 +16,20 @@ class Square{
    }
    boolean moveDown(){
      if(yPosition + 2 == 20 || (square[xPosition][yPosition+2].checkVisable() ||square[xPosition + 1][yPosition+2].checkVisable())){
+       for(int j = 0; j < 20; j++){
+         for(int i = 0; i < 10; i++){
+           if(!square[i][j].isVisable){
+             break;
+           }
+           if(i == 9){
+             for(int index = 0; index < 10; index++){
+               square[index][j].invisible();
+                      //Drop everything above this line.
+             }
+           }
+         }
+       }
+
        return true;
      }
      else{
@@ -58,4 +72,6 @@ class Square{
    block[][] updateArray(){
      return square;
    }
+   
+   
 }
