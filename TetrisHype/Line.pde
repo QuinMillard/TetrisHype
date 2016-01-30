@@ -15,7 +15,7 @@ class Line{
      line[xPosition + 3][yPosition].display(colour);
    }
    boolean moveDown(){
-     if(yPosition + 1 == 20 && (line[xPosition][yPosition+1].checkVisable() ||line[xPosition + 1][yPosition+1].checkVisable() ||line[xPosition + 2][yPosition+1].checkVisable() ||line[xPosition + 3][yPosition+1].checkVisable())){
+     if(yPosition + 1 == 20 || (line[xPosition][yPosition+1].checkVisable() ||line[xPosition + 1][yPosition+1].checkVisable() ||line[xPosition + 2][yPosition+1].checkVisable() ||line[xPosition + 3][yPosition+1].checkVisable())){
        return true;
      }
      else{
@@ -30,28 +30,30 @@ class Line{
        line[xPosition + 3][yPosition].display(colour);
        return false;
      }
-   }
-   boolean moveRight(){
-    if(xPosition + 2 < 10 && !(line[xPosition + 2][yPosition].checkVisable() ||line[xPosition+2][yPosition+1].checkVisable())){
-       return true;
+    }
+    boolean moveRight(){
+    if(xPosition + 4 < 10 && !(line[xPosition + 4][yPosition].checkVisable())){
+      line[xPosition][yPosition].invisible();
+      xPosition++;
+      line[xPosition + 3][yPosition].display(colour); 
+      return true;
      }
      else{
-       line[xPosition][yPosition].invisible();
-       xPosition++;
-       line[xPosition + 3][yPosition].display(colour);
        return false;
      }
-   }
+    }
     boolean moveLeft(){
-    if(xPosition -1 >=0 && (line[xPosition - 1][yPosition].checkVisable() ||line[xPosition - 1][yPosition+1].checkVisable())){
-       return true;
-     }
-     else{
-       line[xPosition+1][yPosition].invisible();
-       xPosition--;
-       line[xPosition][yPosition].display(colour);
-       line[xPosition][yPosition + 1].display(colour);
+    if(xPosition -1 >=0 && (!line[xPosition - 1][yPosition].checkVisable())){
+      line[xPosition+3][yPosition].invisible();
+      xPosition--;
+      line[xPosition][yPosition].display(colour);
+      return true;
+    }
+    else{
        return false;
-     }
+    }
+  }
+  block[][] updateArray(){
+     return line;
    }
 }

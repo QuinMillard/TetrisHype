@@ -28,9 +28,7 @@ class Square{
      }
    }
    boolean moveRight(){
-    if(xPosition + 2 < 10 
-    && !(square[xPosition + 2][yPosition].checkVisable() 
-   || square[xPosition+2][yPosition+1].checkVisable())){
+    if(xPosition + 2 < 10 && !(square[xPosition + 2][yPosition].checkVisable() || square[xPosition+2][yPosition+1].checkVisable())){
        
        square[xPosition][yPosition].invisible();
        square[xPosition][yPosition+1].invisible();
