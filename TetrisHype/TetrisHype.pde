@@ -7,6 +7,7 @@ block[][] blocks;
 ArrayList<Square> boardSquares;
 ArrayList<Line> boardLines;
 int rng;
+boolean isLine;
 
 void setup(){
   background(0);
@@ -14,6 +15,7 @@ void setup(){
   B = new Board();
   C = 0;
   A = 0;
+  isLine = false;
   col = color(255, 255, 255);
   blocks = new block[10][20];
   for (int i = 0; i < 10; i++){
@@ -60,6 +62,13 @@ void draw(){
       case 1:
         if(boardLines.get(0).moveDown()){
           boardLines.remove(0);
+          for (int i = 0; i < 20; i++){
+            for(int j = 0; j<10; j++){
+              if( !blocks[j][i].checkVisable()){
+                isLine = true;
+              }
+            }
+          }
           rng = int(random(2));
           switch(rng){
              case 0:
