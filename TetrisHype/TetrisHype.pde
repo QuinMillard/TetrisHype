@@ -1,44 +1,45 @@
-class block{
-  float size;
-  float positionX;
-  float positionY;
-  color colour;
-  float speed;
-  boolean isVisable;
-  
-  void block(){
-  size = 0;
-  positionX = 0;
-  positionY = 0;
-  colour = 0;
-  speed = 10;
+import java.util.*;
+Board B;
+int C;
+int A;
+color col;
+block[][] blocks;
+ArrayList<Square> boardSquares;
+void setup(){
+  background(0);
+  size(400, 400);
+  B = new Board();
+  C = 0;
+  A = 0;
+  col = color(255, 255, 255);
+  blocks = new block[10][20];
+  for (int i = 0; i < 10; i++){
+    for(int j = 0; j < 20; j++){
+      blocks[i][j] = new block(i*15 + 25,j*15 + 25,color(255),0,15);
+    }
   }
-  block(float xPosistion, float yPosistion, color Color, float fastness){
-    positionX = xPosistion;
-    positionY = yPosistion;
-    colour = Color;
-    speed = fastness;
+  boardSquares = new ArrayList<Square>();
+  Square square = new Square(blocks);
+  boardSquares.add(square);
+  B.DrawBoard();
+}
+
+void draw(){
+  B.DrawBoard();
+  C += 1;
+  text("C = " + C, 0, 10);
+  if(C%30 == 0 && boardSquares.get(0).moveDown()){
+    boardSquares.remove(0);
+    Square square = new Square(blocks);
+    boardSquares.add(square); 
   }
-  void display(color light){
-    colour = light;
-    fill(colour);
-    noStroke();
-    rect(positionX, positionY, size, size);
-    isVisable = true;
+  if(C%2 == 0 && keyPressed && key == 'a'){
+    boardSquares.get(0).moveLeft();
+    text("a",300,100);
   }
-  boolean checkVisable(){
-    return isVisable;
+  if(C%2 == 0 & key == 'd'){
+    boardSquares.get(0).moveRight();
+    text("d",330,100);
   }
-  void invisible(){
-    fill(0);
-    rect(positionX, positionY, size, size);
-    isVisable = false;
-  }
-  void incrementSpeed(){
-    speed++;
-  }
-  void setPosistion(float Xposition, float Yposition){
-  positionX = Xposition;
-  positionY = Yposition;
-  }
+  blocks = boardSquares.get(0).updateArray();
 }
