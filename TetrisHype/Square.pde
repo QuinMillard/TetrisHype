@@ -15,20 +15,42 @@ class Square{
      square[xPosition + 1][yPosition + 1].display(colour);
    }
    boolean moveDown(){
-     if(xPosition + 2 < 20 && (square[xPosition][yPosition+2].checkVisable() ||square[xPosition][yPosition+2].checkVisable())){
+     if(yPosition + 2 < 20 && (square[xPosition][yPosition+2].checkVisable() ||square[xPosition + 1][yPosition+2].checkVisable())){
        return true;
      }
      else{
        square[xPosition][yPosition].invisible();
-       square[xPosition][yPosition].invisible();
+       square[xPosition+1][yPosition].invisible();
        yPosition++;
-       square[xPosition][yPosition].display(colour);
        square[xPosition][yPosition+1].display(colour);
-       square[xPosition + 1][yPosition].display(colour);
        square[xPosition + 1][yPosition + 1].display(colour);
        return false;
      }
    }
    boolean moveRight(){
-    
+    if(xPosition + 2 < 10 && (square[xPosition + 2][yPosition].checkVisable() ||square[xPosition+2][yPosition+1].checkVisable())){
+       return true;
+     }
+     else{
+       square[xPosition][yPosition].invisible();
+       square[xPosition][yPosition+1].invisible();
+       xPosition++;
+       square[xPosition + 1][yPosition].display(colour);
+       square[xPosition + 1][yPosition + 1].display(colour);
+       return false;
+     }
+   }
+    boolean moveLeft(){
+    if(xPosition -1 >=0 && (square[xPosition - 1][yPosition].checkVisable() ||square[xPosition - 1][yPosition+1].checkVisable())){
+       return true;
+     }
+     else{
+       square[xPosition+1][yPosition].invisible();
+       square[xPosition+1][yPosition+1].invisible();
+       xPosition--;
+       square[xPosition][yPosition].display(colour);
+       square[xPosition][yPosition + 1].display(colour);
+       return false;
+     }
+   }
 }
