@@ -28,20 +28,31 @@ class button{
   p1Selected = p1Selected%3;
   }
   
-  void p1AcceptPress(){
-  switch(p1Selected){
-  case 0:
-  p1Speed -= 1;
-  break;
-  
-  case 1:
-  p2Speed += 1;
-  break;
-  
-  case 2:
-  p1Income += 1;
-  break;
+  void p1IncreaseSpeed(){
+  p2Money -= 10000;
+  p1Speed -= 2;
   }
+  void p2IncreaseSpeed(){
+  p1Money -= 10000;
+  p2Speed -= 2;
+  }
+  
+  void p1DecreaseSpeed(){
+  p1Money -= 10000;
+  p1Speed += 2;
+  }
+  void p2DecreaseSpeed(){
+  p2Money -=10000;
+  p2Speed += 2;
+  }
+
+  void p1IncreaseIncome(){
+  p1Money -= 10000;
+  p1Income += 15;
+  }
+  void p2IncreaseIncome(){
+  p2Money -= 10000;
+  p2Income += 5;
   }
   
   void income(){
@@ -64,5 +75,9 @@ class button{
   if(x==1) return p1Speed;
   if(x==2) return p2Speed;
   return 0;
+  }
+  
+  int getP1Selected(){
+    return p1Selected;
   }
 }

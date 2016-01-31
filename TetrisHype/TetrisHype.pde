@@ -65,12 +65,12 @@ void setup(){
       Line lines = new Line(blocks1);
       boardLines1.add(lines);
   }
-  B.DrawBoard();
+  B.DrawBoard(0);
 }
 
 void draw(){
   timer++;
-  B.DrawBoard();
+  B.DrawBoard(Button.getP1Selected());
   Button.income();
   fill(0);
   noStroke();
@@ -134,6 +134,33 @@ void draw(){
     
     
   }
+  if(timer%2 == 0 && keyPressed && key == 'e' || key == 'E'){
+  switch(Button.getP1Selected()){
+    
+  case 0:
+  if(Button.getMoney(1) > 10000){
+  Button.p1DecreaseSpeed();
+  }
+  break;
+  
+  case 1:
+  if(Button.getMoney(1) > 10000){
+  Button.p1IncreaseIncome();
+  }
+  break;
+  
+  case 2:
+  if(Button.getMoney(1) > 10000){
+  Button.p2IncreaseSpeed();
+  }
+  break;
+  }
+  }
+  
+  if(timer%2 == 0 && keyPressed && key == 'q' || key == 'Q'){
+  Button.p1CyclePress();
+  }
+  
   if(timer%2 == 0 && keyPressed && key == 'a' || key == 'A'){
     switch(rng){
       case 0:

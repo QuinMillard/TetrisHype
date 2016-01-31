@@ -6,7 +6,7 @@ class block{
   float speed;
   boolean isVisable;
   
-  void block(){
+  block(){
   size = 0;
   positionX = 0;
   positionY = 0;
