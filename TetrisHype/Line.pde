@@ -28,7 +28,7 @@ class Line{
    int moveDown(){
      int temp = 0;
      if(!isRotated){
-       if(yPosition + 1 == 20 || (line[xPosition][yPosition+1].checkVisable() ||line[xPosition + 1][yPosition+1].checkVisable() ||line[xPosition + 2][yPosition+1].checkVisable() ||line[xPosition + 3][yPosition+1].checkVisable())){
+       if(yPosition + 1 == 20 || (line[xPosition][yPosition+1].checkVisable() ||line[xPosition+1][yPosition+1].checkVisable() ||line[xPosition + 2][yPosition+1].checkVisable() ||line[xPosition +3][yPosition+1].checkVisable())){
          for(int j = 0; j < 20; j++){
            for(int i = 0; i < 10; i++){
              if(!line[i][j].isVisable){
@@ -136,7 +136,7 @@ class Line{
       }
     } 
     else{
-      if(xPosition + 1 < 10 && !(line[xPosition - 1][yPosition].checkVisable() || line[xPosition - 1][yPosition + 1].checkVisable() || line[xPosition - 1][yPosition + 2].checkVisable() || line[xPosition - 1][yPosition + 3].checkVisable())){
+      if(xPosition - 1 >0 && !(line[xPosition - 1][yPosition].checkVisable() || line[xPosition - 1][yPosition + 1].checkVisable() || line[xPosition - 1][yPosition + 2].checkVisable() || line[xPosition - 1][yPosition + 3].checkVisable())){
         line[xPosition][yPosition].invisible();
         line[xPosition][yPosition + 1].invisible();
         line[xPosition][yPosition + 2].invisible();
@@ -156,8 +156,7 @@ class Line{
   void rotate(){
     if(isRotated){
       isRotated = false;
-      if(xPosition + 3 < 10 && !(line[xPosition + 1][yPosition].checkVisable() || line[xPosition + 2][yPosition].checkVisable() || line[xPosition + 3][yPosition].checkVisable())){
-        line[xPosition][yPosition].invisible(); 
+      if(xPosition + 3 < 10 && !(line[xPosition + 1][yPosition].checkVisable() || line[xPosition + 2][yPosition].checkVisable() || line[xPosition + 3][yPosition].checkVisable())){ 
         line[xPosition][yPosition + 1].invisible();  
         line[xPosition][yPosition + 2].invisible(); 
         line[xPosition][yPosition + 3].invisible();
