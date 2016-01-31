@@ -136,7 +136,7 @@ class Line{
       }
     } 
     else{
-      if(xPosition - 1 >0 && !(line[xPosition - 1][yPosition].checkVisable() || line[xPosition - 1][yPosition + 1].checkVisable() || line[xPosition - 1][yPosition + 2].checkVisable() || line[xPosition - 1][yPosition + 3].checkVisable())){
+      if(xPosition - 1 >=0 && !(line[xPosition - 1][yPosition].checkVisable() || line[xPosition - 1][yPosition + 1].checkVisable() || line[xPosition - 1][yPosition + 2].checkVisable() || line[xPosition - 1][yPosition + 3].checkVisable())){
         line[xPosition][yPosition].invisible();
         line[xPosition][yPosition + 1].invisible();
         line[xPosition][yPosition + 2].invisible();
