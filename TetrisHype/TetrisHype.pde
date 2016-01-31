@@ -193,7 +193,7 @@ void draw(){
         boardLines1.get(0).moveLeft();
     } 
   }
-  if(C%2 == 0 & keyCode == RIGHT){
+  if(C%2 == 0 && keyPressed && keyCode == RIGHT){
     switch(rng1){
       case 0:
         boardSquares1.get(0).moveRight();
