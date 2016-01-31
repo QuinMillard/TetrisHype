@@ -70,11 +70,7 @@ void setup(){
 
 void draw(){
   timer++;
-<<<<<<< HEAD
   B.DrawBoard(Button.getP1Selected(), Button.getP2Selected());
-=======
-
->>>>>>> origin/master
   Button.income();
   fill(0);
   noStroke();
@@ -266,12 +262,7 @@ void draw(){
         boardLines1.get(0).moveRight();
     } 
   }
-<<<<<<< HEAD
-  if(C%5 == 0 && rng == 1 && keyPressed && keyCode == UP){
 
-    boardLines1.get(0).rotate();
-    
-  }
   if(timer%2 == 0 && keyPressed && key == 'i' || key == 'I'){
   Button.p2CyclePress();
   }
@@ -299,8 +290,6 @@ void draw(){
   }
   }
   
-=======
->>>>>>> origin/master
   switch(rng1){
       case 0:
         blocks1 = boardSquares1.get(0).updateArray();
@@ -308,7 +297,7 @@ void draw(){
       case 1:
         blocks1 = boardLines1.get(0).updateArray();
   } 
-  B.DrawBoard();
+
 }
 
 void keyReleased(){
