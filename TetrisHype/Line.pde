@@ -23,7 +23,8 @@ class Line{
        noLoop();
      }
    }
-   boolean moveDown(){
+   int moveDown(){
+     int temp = 0;
      if(yPosition + 1 == 20 || (line[xPosition][yPosition+1].checkVisable() ||line[xPosition + 1][yPosition+1].checkVisable() ||line[xPosition + 2][yPosition+1].checkVisable() ||line[xPosition + 3][yPosition+1].checkVisable())){
        for(int j = 0; j < 20; j++){
          for(int i = 0; i < 10; i++){
@@ -31,11 +32,12 @@ class Line{
              break;
            }
            if(i == 9){
+             temp++;
              for(int index = 0; index < 10; index++){
                line[index][j].invisible();
                for( int k = j - 1; k >= 0; k--){
                  if(line[index][k].checkVisable()){
-                   line[index][k+1].display(255);
+                   line[index][k+1].display(color(255, 0, 0));
                    line[index][k].invisible();
                  }
                }
@@ -45,7 +47,7 @@ class Line{
            }
          }
        }
-       return true;
+       return 2*temp + 1;
      }
      else{
        line[xPosition][yPosition].invisible();
@@ -57,7 +59,7 @@ class Line{
        line[xPosition + 1][yPosition].display(colour);
        line[xPosition + 2][yPosition].display(colour);
        line[xPosition + 3][yPosition].display(colour);
-       return false;
+       return 0;
      }
     }
     boolean moveRight(){

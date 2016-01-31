@@ -23,7 +23,8 @@ class Square{
      noLoop();
      }
    }
-   boolean moveDown(){
+   int moveDown(){
+     int temp = 0;
      if(yPosition + 2 == 20 || (square[xPosition][yPosition+2].checkVisable() ||square[xPosition + 1][yPosition+2].checkVisable())){
        for(int j = 0; j < 20; j++){
          for(int i = 0; i < 10; i++){
@@ -31,11 +32,12 @@ class Square{
              break;
            }
            if(i == 9){
+             temp++;
              for(int index = 0; index < 10; index++){
                square[index][j].invisible();
                for( int k = j - 1; k >= 0; k--){
                  if(square[index][k].checkVisable()){
-                   square[index][k+1].display(255);
+                   square[index][k+1].display(color(255, 0, 0));
                    square[index][k].invisible();
                  }
                }
@@ -45,7 +47,7 @@ class Square{
          }
        }
 
-       return true;
+       return 2*temp + 1;
      }
      else{
        square[xPosition][yPosition].invisible();
@@ -53,7 +55,7 @@ class Square{
        yPosition++;
        square[xPosition][yPosition+1].display(colour);
        square[xPosition + 1][yPosition + 1].display(colour);
-       return false;
+       return 0;
      }
    }
    boolean moveRight(){

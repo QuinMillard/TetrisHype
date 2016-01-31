@@ -1,5 +1,7 @@
 import java.util.*;
 Board B;
+button Button;
+int timer;
 int C;
 int A;
 color col;
@@ -16,11 +18,13 @@ int rng1;
 boolean isLine1;
 
 void setup(){
+  Button = new button();
   background(0);
   size(400, 400);
   B = new Board();
   C = 0;
   A = 0;
+  timer = 0;
   isLine = false;
   col = color(255, 255, 255);
   blocks = new block[10][20];
@@ -65,19 +69,26 @@ void setup(){
 }
 
 void draw(){
+  timer++;
   B.DrawBoard();
-  A += 1;
-  C += 1;
+  Button.income();
   fill(0);
   noStroke();
   rect(0,0,400,20);
   fill(255);
-  text("Player 1 = " + C, 0, 10);
-  text("Player 2 = " + A, 300,10);
-  if(C%10 == 0){
+  text("Player 1 = " + Button.getMoney(1), 0, 10);
+  text("Player 2 = " + Button.getMoney(2), 300,10);
+  if(timer%Button.getSpeed(1) == 0){
     switch(rng){
       case 0:
-        if(boardSquares.get(0).moveDown()){
+        boolean x;
+        int temp1;
+        int linesBroken1;
+        temp1 = boardSquares.get(0).moveDown();
+        linesBroken1 = temp1/2;
+        Button.giveMoney(1, linesBroken1*10000);
+        if(temp1 % 2 == 0){x = false;}else{x = true;}
+        if(x){
            boardSquares.remove(0);
            rng = int(random(2));
            switch(rng){
@@ -92,7 +103,14 @@ void draw(){
         }
         break;
       case 1:
-        if(boardLines.get(0).moveDown()){
+        boolean x1;
+        int temp;
+        int linesBroken;
+        temp = boardLines.get(0).moveDown();
+        linesBroken = temp/2;
+        Button.giveMoney(1, linesBroken*10000);
+        if(temp % 2 == 0){x1 = false;}else{x1 = true;}
+        if(x1){
           boardLines.remove(0);
           for (int i = 0; i < 20; i++){
             for(int j = 0; j<10; j++){
@@ -116,7 +134,7 @@ void draw(){
     
     
   }
-  if(C%2 == 0 && keyPressed && key == 'a' || key == 'A'){
+  if(timer%2 == 0 && keyPressed && key == 'a' || key == 'A'){
     switch(rng){
       case 0:
         boardSquares.get(0).moveLeft();
@@ -125,7 +143,7 @@ void draw(){
         boardLines.get(0).moveLeft();
     } 
   }
-  if(C%2 == 0 & key == 'd' || key == 'D'){
+  if(timer%2 == 0 && keyPressed && key == 'd' || key == 'D'){
     switch(rng){
       case 0:
         boardSquares.get(0).moveRight();
@@ -142,10 +160,16 @@ void draw(){
         blocks = boardLines.get(0).updateArray();
     } 
   //fix\/
-  if(C%10 == 0){
+  if(timer%Button.getSpeed(2) == 0){
     switch(rng1){
-      case 0:
-        if(boardSquares1.get(0).moveDown()){
+      case 0: boolean x;
+        int temp;
+        int linesBroken;
+        temp = boardSquares1.get(0).moveDown();
+        linesBroken = temp/2;
+        Button.giveMoney(2, linesBroken*10000);
+        if(temp % 2 == 0){x = false;}else{x = true;}
+        if(x){
            boardSquares1.remove(0);
            rng1 = int(random(2));
            switch(rng1){
@@ -160,7 +184,14 @@ void draw(){
         }
         break;
       case 1:
-        if(boardLines1.get(0).moveDown()){
+        boolean x1;
+        int temp1;
+        int linesBroken1;
+        temp1 = boardLines1.get(0).moveDown();
+        linesBroken1 = temp1/2;
+        Button.giveMoney(2, linesBroken1*10000);
+        if(temp1 % 2 == 0){x1 = false;}else{x1 = true;}
+        if(x1){
           boardLines1.remove(0);
           for (int i = 0; i < 20; i++){
             for(int j = 0; j<10; j++){
@@ -184,7 +215,7 @@ void draw(){
     
     
   }
-  if(C%2 == 0 && keyPressed && keyCode == LEFT){
+  if(timer%2 == 0 && keyPressed && keyCode == LEFT){
     switch(rng1){
       case 0:
         boardSquares1.get(0).moveLeft();
@@ -193,7 +224,7 @@ void draw(){
         boardLines1.get(0).moveLeft();
     } 
   }
-  if(C%2 == 0 && keyPressed && keyCode == RIGHT){
+  if(timer%2 == 0 && keyPressed && keyCode == RIGHT){
     switch(rng1){
       case 0:
         boardSquares1.get(0).moveRight();
