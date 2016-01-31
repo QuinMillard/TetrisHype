@@ -143,6 +143,11 @@ void draw(){
         boardLines.get(0).moveLeft();
     } 
   }
+   if(C%2 == 0 && rng == 1 && keyPressed && (key == 'w' || key == 'W')){
+
+    boardLines.get(0).rotate();
+    
+  }
   if(timer%2 == 0 && keyPressed && key == 'd' || key == 'D'){
     switch(rng){
       case 0:
@@ -232,6 +237,11 @@ void draw(){
       case 1:
         boardLines1.get(0).moveRight();
     } 
+  }
+  if(C%5 == 0 && rng == 1 && keyPressed && keyCode == UP){
+
+    boardLines1.get(0).rotate();
+    
   }
   switch(rng1){
       case 0:
