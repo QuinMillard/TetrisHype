@@ -33,6 +33,12 @@ class Square{
            if(i == 9){
              for(int index = 0; index < 10; index++){
                square[index][j].invisible();
+               for( int k = j - 1; k >= 0; k--){
+                 if(square[index][k].checkVisable()){
+                   square[index][k+1].display(255);
+                   square[index][k].invisible();
+                 }
+               }
                       //Drop everything above this line.
              }
            }

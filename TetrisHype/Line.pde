@@ -33,6 +33,12 @@ class Line{
            if(i == 9){
              for(int index = 0; index < 10; index++){
                line[index][j].invisible();
+               for( int k = j - 1; k >= 0; k--){
+                 if(line[index][k].checkVisable()){
+                   line[index][k+1].display(255);
+                   line[index][k].invisible();
+                 }
+               }
              }
              //Drop all the shit.
              
