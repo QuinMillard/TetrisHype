@@ -66,9 +66,15 @@ void setup(){
       boardLines1.add(lines);
   }
   B.DrawBoard(0, 0);
+  noLoop();
+  fill(255);
+  text("Press a key to start", 50, 300);
+  text("Press a key to start", 250, 300);
 }
 
 void draw(){
+  
+  
   timer++;
   B.DrawBoard(Button.getP1Selected(), Button.getP2Selected());
   Button.income();
@@ -150,7 +156,7 @@ void draw(){
   break;
   
   case 2:
-  if(Button.getMoney(1) > 10000){
+  if(Button.getMoney(1) > 10000 && Button.getSpeed(2) > 2){
   Button.p2IncreaseSpeed();
   }
   break;
@@ -283,7 +289,7 @@ void draw(){
   break;
   
   case 2:
-  if(Button.getMoney(2) > 10000){
+  if(Button.getMoney(2) > 10000 && Button.getSpeed(1) > 2){
   Button.p1IncreaseSpeed();
   }
   break;
@@ -298,6 +304,10 @@ void draw(){
         blocks1 = boardLines1.get(0).updateArray();
   } 
 
+}
+void keyPressed(){
+  loop();
+  
 }
 
 void keyReleased(){

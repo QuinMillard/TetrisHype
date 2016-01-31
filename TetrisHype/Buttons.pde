@@ -35,11 +35,11 @@ class button{
   
   void p1IncreaseSpeed(){
   p2Money -= 10000;
-  p1Speed -= 2;
+  p1Speed -= 1;
   }
   void p2IncreaseSpeed(){
   p1Money -= 10000;
-  p2Speed -= 2;
+  p2Speed -= 1;
   }
   
   void p1DecreaseSpeed(){
