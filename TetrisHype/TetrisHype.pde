@@ -70,7 +70,11 @@ void setup(){
 
 void draw(){
   timer++;
+<<<<<<< HEAD
   B.DrawBoard(Button.getP1Selected(), Button.getP2Selected());
+=======
+
+>>>>>>> origin/master
   Button.income();
   fill(0);
   noStroke();
@@ -170,11 +174,8 @@ void draw(){
         boardLines.get(0).moveLeft();
     } 
   }
-   if(C%2 == 0 && rng == 1 && keyPressed && (key == 'w' || key == 'W')){
-
-    boardLines.get(0).rotate();
-    
-  }
+  
+   
   if(timer%2 == 0 && keyPressed && key == 'd' || key == 'D'){
     switch(rng){
       case 0:
@@ -265,6 +266,7 @@ void draw(){
         boardLines1.get(0).moveRight();
     } 
   }
+<<<<<<< HEAD
   if(C%5 == 0 && rng == 1 && keyPressed && keyCode == UP){
 
     boardLines1.get(0).rotate();
@@ -297,11 +299,24 @@ void draw(){
   }
   }
   
+=======
+>>>>>>> origin/master
   switch(rng1){
       case 0:
         blocks1 = boardSquares1.get(0).updateArray();
         break;
       case 1:
         blocks1 = boardLines1.get(0).updateArray();
-    } 
+  } 
+  B.DrawBoard();
+}
+
+void keyReleased(){
+  if(boardLines.size() > 0 && (key == 'w' || key == 'W')){
+
+    boardLines.get(0).rotate();
+    
+  } else if(boardLines1.size() > 0 && (keyCode == UP)){
+    boardLines1.get(0).rotate();
+  }
 }
