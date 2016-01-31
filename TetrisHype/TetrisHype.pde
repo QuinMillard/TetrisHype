@@ -70,7 +70,7 @@ void setup(){
 
 void draw(){
   timer++;
-  B.DrawBoard();
+
   Button.income();
   fill(0);
   noStroke();
@@ -241,7 +241,8 @@ void draw(){
         break;
       case 1:
         blocks1 = boardLines1.get(0).updateArray();
-    } 
+  } 
+  B.DrawBoard();
 }
 
 void keyReleased(){
