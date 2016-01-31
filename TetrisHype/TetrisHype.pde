@@ -66,8 +66,14 @@ void setup(){
 
 void draw(){
   B.DrawBoard();
+  A += 1;
   C += 1;
-  text("C = " + C, 0, 10);
+  fill(0);
+  noStroke();
+  rect(0,0,400,20);
+  fill(255);
+  text("Player 1 = " + C, 0, 10);
+  text("Player 2 = " + A, 300,10);
   if(C%10 == 0){
     switch(rng){
       case 0:
