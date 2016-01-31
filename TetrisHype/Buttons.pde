@@ -28,6 +28,11 @@ class button{
   p1Selected = p1Selected%3;
   }
   
+  void p2CyclePress(){
+  p2Selected++;
+  p2Selected = p2Selected%3;
+  }
+  
   void p1IncreaseSpeed(){
   p2Money -= 10000;
   p1Speed -= 2;
@@ -79,5 +84,9 @@ class button{
   
   int getP1Selected(){
     return p1Selected;
+  }
+  
+  int getP2Selected(){
+    return p2Selected;
   }
 }

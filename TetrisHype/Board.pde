@@ -2,7 +2,7 @@ class Board{
   
 Board(){
 }
-void DrawBoard(int p1){
+void DrawBoard(int p1, int p2){
 
   stroke(50);
   //Left
@@ -27,12 +27,28 @@ void DrawBoard(int p1){
   rect(31, 332, 36, 26);
   rect(81, 332, 36, 26);
   rect(131, 332, 36, 26);
+  
+  rect(229, 330, 40, 30);
+  rect(279, 330, 40, 30);
+  rect(329, 330, 40, 30);
+  rect(231, 332, 36, 26);
+  rect(281, 332, 36, 26);
+  rect(331, 332, 36, 26);
+  
+  
   fill(color(255, 0, 0));
   rect(41, 341, 16, 8);
   fill(color(225, 225, 0));
   rect(91, 341, 16, 8);
   fill(color(0, 255, 0));
   rect(141, 341, 16, 8);
+    
+  fill(color(255, 0, 0));
+  rect(241, 341, 16, 8);
+  fill(color(225, 225, 0));
+  rect(291, 341, 16, 8);
+  fill(color(0, 255, 0));
+  rect(341, 341, 16, 8); 
     
   fill(color(150, 150, 255));
   switch(p1){
@@ -52,5 +68,25 @@ void DrawBoard(int p1){
   rect(31, 365, 36, 5);
   break;
   }
+  
+  fill(color(150, 150, 255));
+  switch(p2){
+  case 0: rect(231, 365, 36, 5); 
+  fill(0);
+  rect(331, 365, 36, 5); 
+  rect(281, 365, 36, 5); 
+  break;
+  case 1: rect(281, 365, 36, 5); 
+  fill(0);
+  rect(331, 365, 36, 5);
+  rect(231, 365, 36, 5);
+  break; 
+  case 2: rect(331, 365, 36, 5); 
+  fill(0);
+  rect(281, 365, 36, 5);
+  rect(231, 365, 36, 5);
+  break;
+  }
+  
 }
 }

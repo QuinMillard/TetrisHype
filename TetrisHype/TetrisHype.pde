@@ -65,12 +65,12 @@ void setup(){
       Line lines = new Line(blocks1);
       boardLines1.add(lines);
   }
-  B.DrawBoard(0);
+  B.DrawBoard(0, 0);
 }
 
 void draw(){
   timer++;
-  B.DrawBoard(Button.getP1Selected());
+  B.DrawBoard(Button.getP1Selected(), Button.getP2Selected());
   Button.income();
   fill(0);
   noStroke();
@@ -270,6 +270,33 @@ void draw(){
     boardLines1.get(0).rotate();
     
   }
+  if(timer%2 == 0 && keyPressed && key == 'i' || key == 'I'){
+  Button.p2CyclePress();
+  }
+  
+  if(timer%2 == 0 && keyPressed && key == 'o' || key == 'O'){
+  switch(Button.getP2Selected()){
+    
+  case 0:
+  if(Button.getMoney(2) > 10000){
+  Button.p2DecreaseSpeed();
+  }
+  break;
+  
+  case 1:
+  if(Button.getMoney(2) > 10000){
+  Button.p2IncreaseIncome();
+  }
+  break;
+  
+  case 2:
+  if(Button.getMoney(2) > 10000){
+  Button.p1IncreaseSpeed();
+  }
+  break;
+  }
+  }
+  
   switch(rng1){
       case 0:
         blocks1 = boardSquares1.get(0).updateArray();
