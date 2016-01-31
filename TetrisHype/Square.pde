@@ -9,10 +9,19 @@ class Square{
      yPosition = 0;
      colour = color(20,200,20);
      square = board;
+     if(!square[xPosition][yPosition].checkVisable() &&
+     !square[xPosition][yPosition+1].checkVisable() &&
+     !square[xPosition + 1][yPosition].checkVisable() &&
+     !square[xPosition + 1][yPosition + 1].checkVisable()){
+       
      square[xPosition][yPosition].display(colour);
      square[xPosition][yPosition+1].display(colour);
      square[xPosition + 1][yPosition].display(colour);
      square[xPosition + 1][yPosition + 1].display(colour);
+     } else{
+     text("YOU LOSE", 200,30);
+     noLoop();
+     }
    }
    boolean moveDown(){
      if(yPosition + 2 == 20 || (square[xPosition][yPosition+2].checkVisable() ||square[xPosition + 1][yPosition+2].checkVisable())){

@@ -9,10 +9,19 @@ class Line{
      yPosition = 0;
      colour = color(200,200,20);
      line = board;
-     line[xPosition][yPosition].display(colour);
-     line[xPosition + 1][yPosition].display(colour);
-     line[xPosition + 2][yPosition].display(colour);
-     line[xPosition + 3][yPosition].display(colour);
+     if(!line[xPosition][yPosition].checkVisable() &&
+       !line[xPosition + 1][yPosition].checkVisable() &&
+       !line[xPosition + 2][yPosition].checkVisable() &&
+       !line[xPosition + 3][yPosition].checkVisable()){
+       
+         line[xPosition][yPosition].display(colour);
+         line[xPosition + 1][yPosition].display(colour);
+         line[xPosition + 2][yPosition].display(colour);
+         line[xPosition + 3][yPosition].display(colour);
+     } else{
+       text("You Lose (you are trash get good m80)",100,20);
+       noLoop();
+     }
    }
    boolean moveDown(){
      if(yPosition + 1 == 20 || (line[xPosition][yPosition+1].checkVisable() ||line[xPosition + 1][yPosition+1].checkVisable() ||line[xPosition + 2][yPosition+1].checkVisable() ||line[xPosition + 3][yPosition+1].checkVisable())){
